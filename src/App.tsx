@@ -46,7 +46,7 @@ if(newtodoRef.current){
    {
      todos.map((todo)=>(
        <div key={todo.id}>{todo.text}
-             <Button variant="contained" onClick={()=>dispatch({type:"REMOVE",id:todo.id})} style={{width:"5%",margin:"10px"}}>remove</Button>
+             <Button variant="contained" onClick={()=>dispatch({type:"REMOVE",id:todo.id})} style={{width:"5%",margin:"10px",border:"5px"}}>remove</Button>
 
        </div>
      ))
