@@ -33,6 +33,7 @@ if(newtodoRef.current){
   newtodoRef.current.value="";
 }
   },[])
+
   return (
     <div className="App">
       <h1>Please text input </h1>
@@ -40,10 +41,14 @@ if(newtodoRef.current){
       <input type="text" ref={newtodoRef} style={{width:"20%",borderRadius:"10px"}} />
       <br />
       <Button variant="contained" onClick={onAddTodo} style={{width:"20%"}}>add</Button>
+      
      
    {
      todos.map((todo)=>(
-       <div key={todo.id}>{todo.text}</div>
+       <div key={todo.id}>{todo.text}
+             <Button variant="contained" onClick={()=>dispatch({type:"REMOVE",id:todo.id})} style={{width:"5%",margin:"10px"}}>remove</Button>
+
+       </div>
      ))
    }
      
