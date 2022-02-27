@@ -45,8 +45,8 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 ## Discription in this site
--This site made by typeScript 
--This site input any text and add this text .
+   -This site made by typeScript 
+   -This site input any text and add this text .
 -This input text remove by remove button .
 ## Live site link
 Firebase Live Site Link :[Live Site](https://type-3a777.web.app/)
