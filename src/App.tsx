@@ -1,20 +1,16 @@
-import React, { useCallback, useReducer, useRef } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import { Button, TextField } from '@mui/material';
+import React, {useReducer,useRef,useCallback} from 'react';
+import './App.css';
 
 interface Todo{
-    id:number,
-    text:string
+  id:number,
+  text:string
 }
-type Actiontype=
-   |{type:"ADD",text:string} 
-   |{type:"REMOVE"; id:number};
-
+type  ActionType={type:"ADD";text:string} | {type:"REMOVE";id:number}
 function App() {
-  function reducer(state:Todo[],action:Actiontype){
+  function reducer(state:Todo[],action:ActionType){
     switch(action.type){
-      case "ADD" :
+      case "ADD":
         return[
           ...state,
           {
@@ -22,36 +18,34 @@ function App() {
             text:action.text,
           },
         ];
-        case "REMOVE":
-          return state.filter(({id})=>id!==action.id);
+        case "REMOVE" :
+          return state.filter(({id})=>id!==action.id)
     }
   }
-  const [todos, dispatch] = useReducer(reducer, []);
-  const newTodoRef=useRef<HTMLInputElement>(null);
-  const onaddtodo=useCallback(()=>{
- if(newTodoRef.current){
-   dispatch({
-     type:"ADD",
-     text:newTodoRef.current.value
-   })
-   newTodoRef.current.value="";
- }
+  const[todos,dispatch]=useReducer(reducer,[]);
+  const newtodoRef=useRef<HTMLInputElement>(null);
+  const onAddTodo=useCallback(()=>{
+if(newtodoRef.current){
+  dispatch({
+    type:"ADD",
+    text:newtodoRef.current.value
+  })
+  newtodoRef.current.value="";
+}
   },[])
-
   return (
     <div className="App">
-    <TextField
-  label="Input  Name"
-  variant="standard"
-  ref={newTodoRef}
-/>
-<Button variant="contained" onClick={onaddtodo}>add</Button>
-      {
-        todos.map((todo)=>(
-        <div key={todo.id}>
-          {todo.text}</div>
-        ))
-      }
+      <h1>Please text input </h1>
+      
+      <input type="text" ref={newtodoRef} style={{width:"20%",borderRadius:"10px"}} />
+      <br />
+      <Button variant="contained" onClick={onAddTodo} style={{width:"20%"}}>add</Button>
+     
+   {
+     todos.map((todo)=>(
+       <div key={todo.id}>{todo.text}</div>
+     ))
+   }
      
     </div>
   );
